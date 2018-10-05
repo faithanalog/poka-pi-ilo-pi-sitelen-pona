@@ -7,25 +7,25 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-    "os"
-    "strconv"
+	"os"
+	"strconv"
 )
 
 func main() {
-    renderSettings := *sitelen.DefaultRenderSettings
+	renderSettings := *sitelen.DefaultRenderSettings
 
-    envWorkerHost := os.Getenv("WORKER_HOST")
-    if envWorkerHost != "" {
-        renderSettings.WorkerHost = envWorkerHost
-    }
+	envWorkerHost := os.Getenv("WORKER_HOST")
+	if envWorkerHost != "" {
+		renderSettings.WorkerHost = envWorkerHost
+	}
 
-    envWorkerPort := os.Getenv("WORKER_PORT")
-    if envWorkerPort != "" {
-        p, err := strconv.Atoi(envWorkerPort)
-        if err != nil {
-            renderSettings.WorkerPort = p
-        }
-    }
+	envWorkerPort := os.Getenv("WORKER_PORT")
+	if envWorkerPort != "" {
+		p, err := strconv.Atoi(envWorkerPort)
+		if err != nil {
+			renderSettings.WorkerPort = p
+		}
+	}
 
 	http.HandleFunc("/sitelen-pona", func(res http.ResponseWriter, req *http.Request) {
 		// Accept at most 4096 characters
