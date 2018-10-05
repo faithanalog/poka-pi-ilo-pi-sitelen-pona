@@ -6,7 +6,7 @@ Renders using phantomjs
 
 ## API
 
-HTTP GET `/sitelen-pona` and provide toki pona in the body. Returns a PNG file.
+HTTP GET or POST `/sitelen-pona` and provide toki pona in the body. Returns a PNG file.
 
 ## Run locally
 
