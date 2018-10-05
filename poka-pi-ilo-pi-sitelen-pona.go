@@ -22,7 +22,7 @@ func RenderTokiPona(tokipona string, cfg *RenderSettings) ([]byte, error) {
 
 	url := fmt.Sprintf("http://%s:%d/", cfg.WorkerHost, cfg.WorkerPort)
 
-	res, err := http.Post(url, "text/plain", strings.NewReader(tokipona))
+	res, err := http.Post(url, "text/plain", strings.NewReader(strings.ToLower(tokipona)))
 	if err != nil {
 		return nil, err
 	}
