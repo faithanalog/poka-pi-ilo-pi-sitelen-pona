@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  api:
+    build: './'
+    networks:
+      - backend
+    environment:
+      WORKER_HOST: worker
+    ports:
+      - 3004:3004
+    restart: always
+  worker:
+    build: './worker'
+    networks:
+      - backend
+    restart: always
+
+networks: 
+  backend:
